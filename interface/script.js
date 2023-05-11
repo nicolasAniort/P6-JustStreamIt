@@ -52,56 +52,67 @@ function resumeBestFilm(url){
             return resumedb;
         })     
 }
-// Generation de l'interface du Meilleur Film toutes catégories
-fetch(url_bestfilm)
-    .then(res =>res.json())
-    .then(data => {
-        const title = data.results[0].title;
-        const imag = data.results[0].image_url;
-        const url_resume = data.results[0].url;
-        title_mov.textContent = title;
-        img_mov.src = imag;
-        //Recuperation de la promesse resumé si elle existe 
-        resumeBestFilm(url_resume).then(resume => {
-            resume_movie.textContent = resume;
-          }).catch(error => {
-            console.error(error);
-          }); 
-        //const bckg_best_film = document.querySelector('.imgBestFilm');
-        //bckg_best_film.style.backgroundImage = `url(${imag})`;
-        //bckg_best_film.style.backgroundSize = 'cover';
-    })
+//fonction de recuperation des meilleurs films
+async function fetchMovies() {
+    for (let film_count = 1; film_count < 8; film_count++) {
+      const url_temp = url_suffixe_bestsfilms + (film_count + 1);
+      const cpt = film_count;
+      const res = await fetch(url_temp);
+      const data = await res.json();
+      const detailmovie = document.createElement('a');
+      const title = data.results[cpt].title;
+      const url_resume = data.results[cpt].url;
+      const imag = data.results[cpt].image_url;
+      const movie = document.createElement('img');
+
+      slider.appendChild(detailmovie);
+      detailmovie.appendChild(movie);
+      movie.classList.add('movie');
+      detailmovie.setAttribute('href', url_resume);
+      movie.alt = 'affiche du film:' + title;
+      movie.src = imag;
+    }
+  }
+//Fonction de recupération du meilleur Film
+async function fetchBestFilm(url) {
+    const res = await fetch(url);
+    const data = await res.json();
+  
+    const title = data.results[0].title;
+    const imag = data.results[0].image_url;
+    const url_resume = data.results[0].url;
+  
+    title_mov.textContent = title;
+    img_mov.src = imag;
+  
+    try {
+      const resume = await resumeBestFilm(url_resume);
+      resume_movie.textContent = resume;
+    } catch (error) {
+      console.error(error);
+    }
+  
+     //const bckg_best_film = document.querySelector('.imgBestFilm');
+     //bckg_best_film.style.backgroundImage = `url(${imag})`;
+     //bckg_best_film.style.backgroundSize = 'cover';
+  }
+// Generation de l'interface du Meilleur Film toutes catégories  
+  fetchBestFilm(url_bestfilm);
+  
 //Generation de l'interface des meilleurs films toutes categories
-const moviescontain = document.getElementById('moviescontain');
+//const moviescontain = document.getElementById('moviescontain');
+const moviescontain = document.querySelector('#moviescontain')
+let slidercontainer = document.createElement('div');
+let slider = document.createElement('div');
 moviescontain.classList.add('slider-1');
 //creation du bloc contenant le bloc listant les films
-let slidercontainer = document.createElement('div');
 slidercontainer.classList.add('slider-container');
 moviescontain.appendChild(slidercontainer);
 //creation du bloc contenant les films
-let slider = document.createElement('div');
 slider.classList.add('slider');
-slidercontainer.appendChild(slider);
-for(film_count=1;film_count<8;film_count++){
-    let url_temp = url_suffixe_bestsfilms+(film_count+1);        
-    let cpt = film_count;
-    fetch(url_temp)
-        .then(res =>res.json())
-        .then(data => {
-            let detailmovie = document.createElement('a');
-            slider.appendChild(detailmovie);
-            let movie = document.createElement('img');
-            detailmovie.appendChild(movie);
-            movie.classList.add('movie');
-            const title = data.results[cpt].title;
-            const imag = data.results[cpt].image_url;
-            const url_resume = data.results[cpt].url;
-            detailmovie.setAttribute('href', url_resume);
-            movie.alt = 'affiche du film:' + title;
-            movie.src = imag;
-            
-        })
-}
+slidercontainer.appendChild(slider);  
+fetchMovies();
+
 //Creation des 3 blocs et leur contenus
 for(i=0; i<3; i++){
     //creation des variable de boucle
@@ -146,3 +157,6 @@ for(i=0; i<3; i++){
             }})
 
     }
+
+
+
