@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" async></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JustStreamIt</title>
+</head>
+<body>
+    <div id=bodyBlockPage>
+       <!--barre de navigation-->
+        <header>
+            <div class=headerLogo><img src="./img/juststreamit_logo.png" alt="image logo"></div>
+            <nav>
+                <ul id=headerNav>
+                    <li><a href="#">Accueil</a></li>
+                    <li><a href="#">Catégories</a></li>
+                </ul>
+            </nav>
+        </header>
+        <!--Le meilleur films-->
+        <section id=bestFilm class="imgBestFilm">
+            <h1 id="bestFilmName"></h1>
+            <div class="imgBestFilm"><img src="" id="bestFilm_img" alt="affiche du film le mieux noté"></div>
+            <div id=bestFilm_info>
+                <div class=title id=bestFilm_title></div>
+                <button id="bestFilmButtonInfo">Informations</button>
+                <h2>Résumé</h2>
+                <p id=bestFilmDescription></p>
+            </div>
+        </section>
+        <br>
+        <!--Les films les mieux notés-->
+        <div id="moviescontain">
+            <h1 class="bestFilms">Film les mieux notés</h1>
+            </div>
+            <div id="slidebox1">
+            </div>
+            <div id="slidebox2">
+            </div>
+            <div id="slidebox3">
+            </div> 
+        </div>
+        <!--Fenetre modale-->
+        <div id="infoModal" class="modal">
+            <div class="modalContent">
+                <span class="modalContent__close">&times;</span>
+                <div id=headerModal>
+                    <span id=headerModal__originalTitle></span>
+                    <span id=headerModal__filmImage></span>
+                </div>
+                <div id=infoModalText>
+                    <div class=infoModalText__info>
+                        <span class=infoModalText__titleInfo>Genres:</span>
+                        <span class=infoModalText__infoText id=infoModalText__genres></span>
+                    </div>
+                    <div class=infoModalText__info>
+                        <span class=infoModalText__titleInfo>Date de sortie:</span>
+                        <span class=infoModalText__infoText id=infoModalText__datePublished></span>
+                    </div>  
+                    <div class=infoModalText__info>
+                        <span class=infoModalText__titleInfo>Classification:</span>
+                        <span class=infoModalText__infoText id=infoModalText__rated></span>
+                    </div>  
+                    <div class=infoModalText__info>
+                        <span class=infoModalText__titleInfo>Score IMDB:</span>
+                        <span class=infoModalText__infoText id=infoModalText__imdbScore></span>
+                    </div> 
+                    <div class=infoModalText__info>
+                        <span class=infoModalText__titleInfo>Réalisateur:</span>
+                        <span class=infoModalText__infoText id=infoModalText__directors></span>
+                    </div> 
+                    <div class=infoModalText__info>
+                        <span class=infoModalText__titleInfo>Acteurs:</span>
+                        <span class=infoModalText__infoText id=infoModalText__actors></span>
+                    </div> 
+                    <div class=infoModalText__info>
+                        <span class=infoModalText__titleInfo >Durée:</span>
+                        <span class=infoModalText__infoText id=infoModalText__duration></span>
+                    </div> 
+                    <div class=infoModalText__info>
+                        <span class=infoModalText__titleInfo>Pays:</span>
+                        <span class=infoModalText__infoText id=infoModalText__countries></span>
+                    </div> 
+                    <div class=infoModalText__info>
+                        <span class=infoModalText__titleInfo>Box Office</span>
+                        <span class=infoModalText__infoText id=infoModalText__worldwideGrossIncome></span>
+                    </div> 
+                    <div class=infoModalText__info>
+                        <span class=infoModalText__titleInfo>Résumé:</span>
+                        <span class=infoModalText__infoText id=infoModalText__longDescription></span>
+                    </div>
+                </div>
+            </div>
+        </div>                   
+    </div>
+</body>
+</html>
