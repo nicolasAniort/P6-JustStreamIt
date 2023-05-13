@@ -9,44 +9,14 @@
     <title>JustStreamIt</title>
 </head>
 <body>
-    <div id=bodyBlockPage>
-       <!--barre de navigation-->
-        <header>
-            <div class=headerLogo><img src="./img/juststreamit_logo.png" alt="image logo"></div>
-            <nav>
-                <ul id=headerNav>
-                    <li><a href="#">Accueil</a></li>
-                    <li><a href="#">Catégories</a></li>
-                </ul>
-            </nav>
-        </header>
-        <!--Le meilleur films-->
-        <section id=bestFilm class="imgBestFilm">
-            <h1 id="bestFilmName"></h1>
-            <div class="imgBestFilm"><img src="" id="bestFilm_img" alt="affiche du film le mieux noté"></div>
-            <div id=bestFilm_info>
-                <div class=title id=bestFilm_title></div>
-                <button id="bestFilmButtonInfo">Informations</button>
-                <h2>Résumé</h2>
-                <p id=bestFilmDescription></p>
-            </div>
-        </section>
-        <br>
-        <!--Les films les mieux notés-->
-        <div id="moviescontain">
-            <h1 class="bestFilms">Film les mieux notés</h1>
-            </div>
-            <div id="slidebox1">
-            </div>
-            <div id="slidebox2">
-            </div>
-            <div id="slidebox3">
-            </div> 
-        </div>
-        <!--Fenetre modale-->
-        <div id="infoModal" class="modal">
-            <div class="modalContent">
-                <span class="modalContent__close">&times;</span>
+    <!--Fenetre modale-->
+    <div class="modal-container">
+        <div class="overlay modal-trigger"></div>
+            <div class="modal">
+                <button class="close-modal modal-trigger">X</button>
+                <h1>TITRE</h1>
+                <p>lorem ipsum tatati tatata </p>
+                <!--span class="">&times;</span>
                 <div id=headerModal>
                     <span id=headerModal__originalTitle></span>
                     <span id=headerModal__filmImage></span>
@@ -92,8 +62,42 @@
                         <span class=infoModalText__titleInfo>Résumé:</span>
                         <span class=infoModalText__infoText id=infoModalText__longDescription></span>
                     </div>
-                </div>
+                </div-->
             </div>
+    </div>
+    <div id=bodyBlockPage>
+       <!--barre de navigation-->
+        <header>
+            <div class=headerLogo><img src="./img/juststreamit_logo.png" alt="image logo"></div>
+            <nav>
+                <ul id=headerNav>
+                    <li><a href="#">Accueil</a></li>
+                    <li><a href="#">Catégories</a></li>
+                </ul>
+            </nav>
+        </header>
+        <!--Le meilleur films-->
+        <section id=bestFilm class="imgBestFilm">
+            <h1 id="bestFilmName"></h1>
+            <div class="imgBestFilm"><img src="" id="bestFilm_img" alt="affiche du film le mieux noté"></div>
+            <div id=bestFilm_info>
+                <div class=title id=bestFilm_title></div>
+                <button id="bestFilmButtonInfo">Informations</button>
+                <h2>Résumé</h2>
+                <p id=bestFilmDescription></p>
+            </div>
+        </section>
+        <br>
+        <!--Les films les mieux notés-->
+        <div id="moviescontain">
+            <h1 class="bestFilms">Film les mieux notés</h1>
+            </div>
+            <div id="slidebox1">
+            </div>
+            <div id="slidebox2">
+            </div>
+            <div id="slidebox3">
+            </div> 
         </div>                   
     </div>
 </body>
