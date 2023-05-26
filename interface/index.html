@@ -10,13 +10,12 @@
 </head>
 <body>
     <!--Fenetre modale-->
-    <div class="modal-container">
-        <div class="overlay modal-trigger"></div>
+    <div id="modal_movie" class="modal-container">
+        <!--div class="overlay"></div-->
             <div class="modal">
-                <button class="close-modal modal-trigger">X</button>
-                <h1>TITRE</h1>
-                <p>lorem ipsum tatati tatata </p>
-                <!--span class="">&times;</span>
+                <span class="close">&times;</span>
+                <button id="modal_close_button" type="button" class="close-modal">X</button>
+                <h2 id=headerModal__originalTitle></h2>
                 <div id=headerModal>
                     <span id=headerModal__originalTitle></span>
                     <span id=headerModal__filmImage></span>
@@ -62,13 +61,14 @@
                         <span class=infoModalText__titleInfo>Résumé:</span>
                         <span class=infoModalText__infoText id=infoModalText__longDescription></span>
                     </div>
-                </div-->
+                </div>
             </div>
+        </div>
     </div>
     <div id=bodyBlockPage>
        <!--barre de navigation-->
         <header>
-            <div class=headerLogo><img src="./img/juststreamit_logo.png" alt="image logo"></div>
+            <div class="header__logo"><img src="./img/juststreamit_logo.png" alt="image logo"></div>
             <nav>
                 <ul id=headerNav>
                     <li><a href="#">Accueil</a></li>
@@ -99,6 +99,7 @@
             <div id="slidebox3">
             </div> 
         </div>                   
+    </div>
     </div>
 </body>
 </html>
