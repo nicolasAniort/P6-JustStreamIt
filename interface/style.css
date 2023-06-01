@@ -19,9 +19,7 @@ body
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0 auto;
-    /*margin-left:auto;*/
-    /*margin-right:auto;*/
+    margin: 0 auto;    
 }
 @media (min-width:1280px) {
     body {
@@ -134,7 +132,6 @@ header nav ul li
     margin-bottom: 3px;
     width: 100%;
     margin-left: 10px;
-    /*text-align: center;*/
     margin-bottom: 30px;
     font-size: 5em;
     text-shadow: 3px 3px 1px rgb(0, 0, 0);
@@ -189,6 +186,9 @@ header nav ul li
     color: rgb(255, 255, 255);
     text-decoration: none;
     margin-left: 10px;
+}
+#bestFilm_title h2{
+margin-left:5px;
 }
 /*Classe bestFilms*/
 .bestFilms {
@@ -349,58 +349,6 @@ margin-top: 0.3em;
     {
         max-width: 100%;
     }
-    
-    /* Modal window */
-    /*.modal-btn{
-        padding: 10px 14px;
-        font-size: 14px !important;
-        margin:100px auto;
-        display: block;
-        min-width: 150px;
-        cursor: pointer;
-    }*/
-    .modal-container {
-        position: fixed !important;
-        top: 0;
-        width: 100vw;
-        height:100vh;
-        display: none;
-    }
-    .modal-container.active {
-        display: block !important;
-    }
-    .overlay{
-        position:absolute;
-        width:100%;
-        height:100%;
-        background: #333333d3;
-
-    }
-    .modal{
-        width:95%;
-        max-width:500px;
-        padding:30px;
-        min-width:300px;
-        background:#fff;
-        border-radius:5px;
-        position:fixed;
-        top: 40%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-    }
-    .close-modal{
-        padding: 8px 10px;
-        border:none !important;
-        border-radius: 5px;
-        font-size: 18px;
-        position:absolute !important;
-        top: 10px;
-        right: 10px;
-        cursor: pointer;
-        background: #ff365e;
-        color: #fff;
-    }
- 
     /*categories */
 
     .category h1
@@ -441,7 +389,7 @@ margin-top: 0.3em;
                 transform: scale(1.1);
     }
 }
-/*slider*/  
+/*---SLIDER*/  
   body {
     background: #fff;
     font-family: Arial, Helvetica, sans-serif;
@@ -463,9 +411,6 @@ margin-top: 0.3em;
   .slider-1 .slider {
     display: flex;
     overflow: hidden;
-    /* Si on veut faire glisser vers la droite */
-    /* Il faut aussi changer l'animation(transform) en valeurs positives */
-    /* flex-direction: row-reverse; */
   }
   .slider-1 p {
     background: #000;
@@ -538,17 +483,65 @@ margin-top: 0.3em;
     flex: 0 0 200px;
     margin-right: 10px;
   }
+  /* Bouton d'affichage de la fenetre modale*/
+    #bestFilmButtonInfo {
+        font-weight: bolder;
+        background-color: #2e2e2e;
+        color: white;
+        padding: 10px 17px;
+        text-align: center;
+        font-size: 20px;
+        height:50px;
+        width:150px;
+        border-radius:360px;   
+        display: block;
+        margin-top: 30px;
+    }
+    #bestFilmButtonInfo:hover {
+        background-color: #b82222;
+        cursor: pointer;
+        border-right: #000 4px;
+        border-bottom: #000 4px;
+        border-right-style: groove ;
+        border-bottom-style: groove ;
+      }
+  .modal-trigger {
+    font-weight: bolder;
+    background-color: #2e2e2e90;
+    z-index: 2;
+    color: white;
+    padding: 10px 17px;
+    text-align: center;
+    display: inline-block;
+    font-size: 25px;
+    border-radius:50%;   
+    margin-left: 129px; 
+    position: relative;
+    top: -50%;
+  }
+  .modal-trigger:hover {
+    background-color: #b822229f;
+    cursor: pointer;
+    border: #ffffff solid 2px;
+  }
   /* Affichage de la fenêtre modale */
   .modal {
+    width:40%;
+    max-width:555px;
+    padding:30px;
+    min-width:465px;
+    background:#fff;
+    border-radius:5px;
+    position:fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     display: none;
-    position: fixed;
     z-index: 3;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.8);
+    border-style: solid;
+    border-radius: 0cap;
+    border:rgb(0, 0, 0);
+    display: block;
   }
   
   .modal-content {
@@ -590,13 +583,81 @@ margin-top: 0.3em;
   .modal-description {
     margin-bottom: 20px;
   }
-  
-  .modal-close {
-    color: #aaa;
-    font-size: 28px;
-    font-weight: bold;
+  #modal_close_button {
+    top: 10px;
+    right: 90%;
     cursor: pointer;
+    background: #ff365e;
+    color: #fff;
   }
-  
+  #modal_close_button:hover {
+    cursor:pointer;
+  }
+  #modal_close_button:focus {
+    top: 10px;
+    right: 90%;
+    cursor: pointer;
+    background: #fff;
+    color: #ff365e;
+  }
+  #modal_close_button:active {
+    cursor:pointer;
+  }
+  #modal button:active{
+        display:none;
+  }
+  .modal-close {
+    display: none;
+  }
+      /* Modal window 
+      .modal-container {
+        position: fixed !important;
+        top: 0;
+        width: 100vw;
+        height:100vh;
+        display: none;
+    }
+    .modal-container.active {
+        display: block !important;
+    }
+    .overlay{
+        position:absolute;
+        width:100%;
+        height:100%;
+        background: #333333d3;
+
+    }
+    .modal{
+        width:40%;
+        max-width:555px;
+        padding:30px;
+        min-width:465px;
+        background:#fff;
+        border-radius:5px;
+        position:fixed;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .close-modal{
+        padding: 8px 10px;
+        border:none !important;
+        border-radius: 5px;
+        font-size: 18px;
+        position:absolute !important;
+        top: 10px;
+        right: 90%;
+        cursor: pointer;
+        background: #ff365e;
+        color: #fff;
+    }
+    #modal_close_button button{
+        position:absolute !important;
+        top: 10px;
+        right: 90%;
+        cursor: pointer;
+        background: #ff365e;
+        color: #fff;
+    }*/
  
   
