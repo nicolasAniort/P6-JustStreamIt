@@ -8,6 +8,7 @@ const url_bestfilm = 'http://localhost:8000/api/v1/titles/?sort_by=-imdb_score&p
 const url_suffixe_bestsfilms = 'http://localhost:8000/api/v1/titles/?sort_by=-imdb_score&page_size=';
 const url_prefixe_genre = 'http://localhost:8000/api/v1/titles/?genre=';
 const url_suffixe_genre = '&sort_by=-imdb_score&page_size=7';
+const img_empty = './img/sans_img.png'
 //Variables globales
 let new_url;
 
@@ -33,7 +34,7 @@ function resumeBestFilm(url){
             return resumedb;
         })     
 }
-//Fonction de recupération du meilleur Film
+//Fonction de recupération du MEILLEUR FILM
 async function fetchBestFilm(url) {
   const res = await fetch(url);
   const data = await res.json();
@@ -44,7 +45,23 @@ async function fetchBestFilm(url) {
 
   title_mov.textContent = title;
   img_mov.src = imag;
-
+  fetch(url_resume)
+  .then(res =>res.json())
+  .then(data => {     
+      let boutbestfilm = document.getElementById('bestFilmButtonInfo');      
+      // Ajout des classes "slide" et "movie" à chaque élément
+      console.log(data);
+      var idbestfilm = data.id;
+      boutbestfilm.id = idbestfilm;
+      boutbestfilm.type ="button";
+      boutbestfilm.addEventListener("click", function(id) {
+        // Déclarez et initialisez la variable modal
+        var modal = document.querySelector(".modal-close"); 
+        modal.className ="modal";
+        ModalWindows(id);
+        modalContainer.classList.add('active'); // ligne pour afficher la modale
+      });
+  })
   try {
     const resume = await resumeBestFilm(url_resume);
     resume_movie.textContent = resume;
@@ -52,7 +69,7 @@ async function fetchBestFilm(url) {
     console.error(error);
   }
 }
-// Generation de l'interface du Meilleur Film toutes catégories  
+// Generation de l'interface du MEILLEUR FILM toutes catégories  
 fetchBestFilm(url_bestfilm);
 //fonction de recuperation des meilleurs films
 function fetchMovies() {
@@ -66,6 +83,10 @@ function fetchMovies() {
                 const title = data.results[cpt].title;
                 const url_resume = data.results[cpt].url;
                 const imag = data.results[cpt].image_url;
+                if (!imag) {
+                  // Utiliser l'image de remplacement
+                  imag = './img/sans_img.png';
+                }
                 const movie = document.createElement('img');
                 let boutons = document.createElement('button');
                  // Ajout des classes "slide" et "movie" à chaque élément
@@ -177,13 +198,11 @@ const slideBoxes = document.querySelectorAll('.slider-container');
 slideBoxes.forEach(box => {
   const arrowLeft = document.createElement('div');
   arrowLeft.classList.add('slider-arrow', 'arrow-left');
-  arrowLeft.style.backgroundImage = "url('./img/a-left.png')"; 
   arrowLeft.addEventListener('click', () => scrollSlider(box, 'left'));
   box.appendChild(arrowLeft);
 
   const arrowRight = document.createElement('div');
   arrowRight.classList.add('slider-arrow', 'arrow-right');
-  arrowRight.style.backgroundImage = "url('./img/a-right.png')";
   arrowRight.addEventListener('click', () => scrollSlider(box, 'right'));
   box.appendChild(arrowRight);
 });
@@ -226,7 +245,6 @@ function ModalWindows(id){
       .then(data => {
           //creation des variables de champs
           let modaltitle = document.querySelector('#headerModal_Title_originalTitle');
-          let _title = document.querySelector('#headerModal__originalTitle');
           let _filmImage = document.querySelector('#headerModal__filmImage');
           let _genres = document.querySelector('#infoModalText__genres');
           let _publishdate = document.querySelector('#infoModalText__datePublished');
@@ -239,7 +257,6 @@ function ModalWindows(id){
           let _resume = document.querySelector('#infoModalText__longDescription');
           //alimentation des variables de champs
           modaltitle.textContent = data.title;
-          _title.textContent = data.title;
           _filmImage.src = data.image_url;
           _genres.textContent = data.genres;
           _publishdate.textContent = data.date_published;
